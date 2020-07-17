@@ -35,6 +35,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gnupg2 \
     && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update \
+    && apt-get install -y language-pack-ja-base language-pack-ja
 # setup keys
 RUN apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 
@@ -49,9 +51,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     && rm -rf /var/lib/apt/lists/*
 
 # setup environment
-ENV LANG C.UTF-8
-ENV LC_ALL C.UTF-8
-
+ENV LANG ja_JP.UTF-8
+ENV LC_ALL ja_JP.UTF-8
 # bootstrap rosdep
 RUN rosdep init \
     && rosdep update
