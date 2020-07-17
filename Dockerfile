@@ -58,6 +58,8 @@ RUN rosdep init \
     && rosdep update
 
 # install ros packages
+RUN echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list \
+    && curl -SL http://packages.osrfoundation.org/gazebo.key | apt-key add -
 ENV ROS_DISTRO kinetic
 RUN apt-get update && apt-get install -y \
 #    ros-kinetic-ros-core=1.3.1-0* \
