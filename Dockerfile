@@ -23,6 +23,7 @@ RUN apt-get update \
         dbus-x11 x11-utils \
         terminator \
         gnome-terminal less \
+        fonts-roboto fonts-noto fonts-ricty-diminished \
     && apt-get autoclean \
     && apt-get autoremove \
     && rm -rf /var/lib/apt/lists/*
