@@ -64,6 +64,8 @@ ENV ROS_DISTRO kinetic
 RUN apt-get update && apt-get install -y \
 #    ros-kinetic-ros-core=1.3.1-0* \
     ros-kinetic-desktop-full \
+    ros-kinetic-turtlebot3 ros-kinetic-turtlebot3-msgs ros-kinetic-turtlebot3-simulations \
+    ros-kinetic-aruco-ros \
     #              A
     #              +--- full desktop \
     && rm -rf /var/lib/apt/lists/*
@@ -89,6 +91,7 @@ RUN chmod +x /bin/tini
 
 ADD image /
 RUN pip install setuptools wheel && pip install -r /usr/lib/web/requirements.txt
+RUN pip install requests flask
 
 RUN cp /usr/share/applications/terminator.desktop /root/Desktop
 RUN echo "source /opt/ros/kinetic/setup.bash" >> /root/.bashrc
